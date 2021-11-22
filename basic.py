@@ -5,8 +5,14 @@ import math
 
 # 将复折射率转换为复介电常数
 def convert_refractive_dielectric(refractive_complex):
-    dielectric_complex = refractive_complex * refractive_complex
+    dielectric_complex = refractive_complex**2
     return dielectric_complex
+
+
+# 将复介电常数转换为复折射率
+def convert_dielectric_refractive(dielectric_complex):
+    refractive_complex = cmath.sqrt(dielectric_complex)
+    return refractive_complex
 
 
 # 计算SPP界面的传播常数

@@ -15,9 +15,9 @@ b3 = 9.896161e-6
 
 
 def fiber_core_refractive(lambda_0):
-    k1 = (a1*lambda_0*lambda_0)/(lambda_0*lambda_0-b1*b1)
-    k2 = (a2*lambda_0*lambda_0)/(lambda_0*lambda_0-b2*b2)
-    k3 = (a3*lambda_0*lambda_0)/(lambda_0*lambda_0-b3*b3)
+    k1 = (a1*lambda_0**2)/(lambda_0**2-b1*b1)
+    k2 = (a2*lambda_0**2)/(lambda_0**2-b2*b2)
+    k3 = (a3*lambda_0**2)/(lambda_0**2-b3*b3)
     refractive = math.sqrt(1+k1+k2+k3)
     return refractive
 

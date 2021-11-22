@@ -21,9 +21,10 @@ def calculate_propagation_constant(dielectric_complex_1, dielectric_complex_2, l
 # 计算Kretschmann结构的激发角度theta
 # 传入beta为对应频率的SPP传播常数，dielectric_complex_3为激发金属下层的复介电常数
 # lambda_0为对应的激发频率
-def calculate_kretschmann_theta(beta, dielectric_complex_3, lambda_0):
-    k = (2*math.pi/lambda_0)*cmath.sqrt(dielectric_complex_3)
-    theta = cmath.asin(beta/k)
+def calculate_kretschmann_theta(beta, dielectric_constant_3, lambda_0):
+    beta_real = beta.real
+    k = (2*math.pi/lambda_0)*math.sqrt(dielectric_constant_3)
+    theta = math.asin(beta_real/k)
     return theta
 
 

@@ -24,6 +24,7 @@ y1 = []
 y2 = []
 y3 = []
 
+
 def plot_thets_spp(air_refractive_2, fiber_n):
     index = 0
     while index <= 669:
@@ -43,24 +44,56 @@ def plot_thets_spp(air_refractive_2, fiber_n):
         y3.append(pd_theta_spp-pd_h_theta_spp)
         index += 1
 
+# 0.302704071	1.164367	2.339882	1.455224	1.821829
+# 0.400084717	1.393514	3.076941	1.803938	2.445232
+xx = []
+yy = []
+yy300 = []
+yy200 = []
 
-plt.xlabel("Wavelength(μm)")
+def plot_fiber_data():
+    index = 1.05
+    lambda0 = 0.400084717e-6
+    lambda300 = 0.302704071
+
+    pd_real = 1.393514
+    pd_img = 3.076941
+    pd_h_real = 1.803938
+    pd_h_img = 2.445232
+    pd_ref = complex(pd_real, pd_img)
+    pd_h_ref = complex(pd_h_real, pd_h_img)
+
+    pd_real_300 = 1.164367
+    pd_img_300 = 2.339882
+    pd_h_real_300 = 1.455224
+    pd_h_img_300 = 1.821829
+    pd_ref_300 = complex(pd_real_300, pd_img_300)
+    pd_h_ref_300 = complex(pd_h_real_300, pd_h_img_300)
+
+
+
+    while index <= 1.95:
+        xx.append(index)
+        pd_theta_spp = comsol(lambda0, pd_ref, 1.0003+0j, index)
+        pd_h_theta_spp = comsol(lambda0, pd_h_ref, 1.0003+0j, index)
+        theta = pd_theta_spp - pd_h_theta_spp
+        yy.append(theta)
+
+        pd_theta_spp_300 = comsol(lambda300, pd_ref_300, 1.0003+0j, index)
+        pd_h_theta_spp_300 = comsol(lambda300, pd_h_ref_300, 1.0003+0j, index)
+        theta_300 = pd_theta_spp_300 - pd_h_theta_spp_300
+        yy300.append(theta_300)
+
+        index += 0.001
+
+plt.xlabel("index")
 # plt.ylabel("Normalized Intensity(a.u.)")
 plt.ylabel("ThetaSPP(deg)")
 
+plot_fiber_data()
 
-plot_thets_spp(1.00029+0j, 1.3425)
-l1, = plt.plot(x, y1, c='red', linewidth=1.5, linestyle='-', label=u"Pd(Palm)")
-l2, = plt.plot(x, y2, c='blue', linewidth=1.5, linestyle='-', label=u"Pd-H(Palm)")
+l1, = plt.plot(xx, yy, c='red', linewidth=1.5, linestyle='-', label=u"400nm")
+l2, = plt.plot(xx, yy300, c='blue', linewidth=1.5, linestyle='-', label=u"300nm")
 # l3, = plt.plot(x, y3, c='blue', linewidth=1.5, linestyle='-', label=u"Pd-H(Palm)")
 plt.legend()
 plt.show()
-
-
-lam = 300e-9
-pd_real = 1.1616365
-pd_img = 2.321701
-
-pd_ref = complex(pd_real, pd_img)
-pd_theta_spp = comsol(lam, pd_ref, 1.00029+0j, 1.3425)
-print(pd_theta_spp)

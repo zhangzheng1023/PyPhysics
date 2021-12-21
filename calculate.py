@@ -49,7 +49,7 @@ plt.xlabel("Wavelength(μm)")
 plt.ylabel("ThetaSPP(deg)")
 
 
-plot_thets_spp(1.00029+0j, 1.3425)
+plot_thets_spp(1.00029+0j, 1.89)
 l1, = plt.plot(x, y1, c='red', linewidth=1.5, linestyle='-', label=u"Pd(Palm)")
 l2, = plt.plot(x, y2, c='blue', linewidth=1.5, linestyle='-', label=u"Pd-H(Palm)")
 # l3, = plt.plot(x, y3, c='blue', linewidth=1.5, linestyle='-', label=u"Pd-H(Palm)")
@@ -62,5 +62,5 @@ pd_real = 1.1616365
 pd_img = 2.321701
 
 pd_ref = complex(pd_real, pd_img)
-pd_theta_spp = comsol(lam, pd_ref, 1.00029+0j, 1.3425)
+pd_theta_spp = comsol(lam, pd_ref, 1.00029+0j, 1.33)
 print(pd_theta_spp)

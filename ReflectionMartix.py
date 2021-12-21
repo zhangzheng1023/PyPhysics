@@ -25,11 +25,11 @@ def calculate_ref(thickness, lam0, die_2, n_prism, theta_1, n_air):
 x = []
 reflection = []
 reflection2 = []
-index = 35
-while index <= 70:
+index = 10
+while index <= 50:
     x.append(index)
-    reflection.append(calculate_ref(30e-9, 250e-9, 1.033012 + 1.98789j, 1.3425, math.radians(index), 1.00029))
-    reflection2.append(calculate_ref(30e-9, 250e-9, 1.363482 + 1.323541j, 1.3425, math.radians(index), 1.00029))
+    reflection.append(calculate_ref(20e-9, 500e-9, 1.667659 + 3.765795j, 1.89, math.radians(index), 1.00029))
+    reflection2.append(calculate_ref(20e-9, 500e-9, 2.005509 + 2.83011j, 1.89, math.radians(index), 1.00029))
     index += 0.1
 
 
@@ -40,5 +40,7 @@ plt.ylabel("ThetaSPP(deg)")
 l1, = plt.plot(x, reflection, c='red', linewidth=1.5, linestyle='-', label=u"Pd(Palm)")
 l2, = plt.plot(x, reflection2, c='blue', linewidth=1.5, linestyle=':', label=u"Pd(Palm)")
 # l3, = plt.plot(x, y3, c='blue', linewidth=1.5, linestyle='-', label=u"Pd-H(Palm)")
-plt.legend()
-plt.show()
+# plt.legend()
+# plt.show()
+
+print(math.degrees(math.asin(math.sin(math.radians(52.5-10))*1.3425/1.00029)))

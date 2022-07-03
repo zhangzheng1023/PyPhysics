@@ -1,0 +1,5 @@
+comsol batch -inputfile 7-1.mph -outputfile 7-1-out.mph
+comsol batch -inputfile 7-2.mph -outputfile 7-2-out.mph
+comsol batch -inputfile 7-3.mph -outputfile 7-3-out.mph
+comsol batch -inputfile 7-4.mph -outputfile 7-4-out.mph
+comsol batch -inputfile 7-5.mph -outputfile 7-5-out.mph
